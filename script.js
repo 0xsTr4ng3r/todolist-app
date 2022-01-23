@@ -1,11 +1,28 @@
 const frame = document.getElementById("frame");
 let getData = JSON.parse(localStorage.getItem("datas"));
 
-let datas = {
-    id : 0,
-    task : Example,
-    status : false
-};
+let datas = [
+    {
+        id : 1,
+        task : "Example",
+        status : false
+    },
+    {
+        id : 2,
+        task : "Example",
+        status : false
+    },
+    {
+        id: 3,
+        task : "Example",
+        status : false
+    },
+    {
+        id: 4,
+        task : "Example",
+        status : false
+    }
+];
 localStorage.setItem("datas", JSON.stringify(datas));
 
 let getTask = () => {
