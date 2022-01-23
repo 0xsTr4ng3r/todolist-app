@@ -3,7 +3,7 @@ let getData = JSON.parse(localStorage.getItem("datas"));
 
 let datas = {
     id : 0,
-    task : Example,
+    task : 'Example',
     status : false
 };
 localStorage.setItem("datas", JSON.stringify(datas));
