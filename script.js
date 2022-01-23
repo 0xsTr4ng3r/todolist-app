@@ -1,6 +1,5 @@
 const frame = document.getElementById("frame");
 let getData = JSON.parse(localStorage.getItem("datas"));
-
 let datas = [
     {
         id : 1,
@@ -24,7 +23,6 @@ let datas = [
     }
 ];
 localStorage.setItem("datas", JSON.stringify(datas));
-
 let getTask = () => {
     let task = document.getElementById("task");
     if(task.value.length > 0){
