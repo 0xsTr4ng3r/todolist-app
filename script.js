@@ -1,28 +1,30 @@
 const frame = document.getElementById("frame");
 let getData = JSON.parse(localStorage.getItem("datas"));
-let datas = [
-    {
-        id : 1,
-        task : "Example",
-        status : false
-    },
-    {
-        id : 2,
-        task : "Example",
-        status : false
-    },
-    {
-        id: 3,
-        task : "Example",
-        status : false
-    },
-    {
-        id: 4,
-        task : "Example",
-        status : false
-    }
-];
-localStorage.setItem("datas", JSON.stringify(datas));
+if(getData == ''){
+    let datas = [
+        {
+            id : 1,
+            task : "Example",
+            status : false
+        },
+        {
+            id : 2,
+            task : "Example",
+            status : false
+        },
+        {
+            id: 3,
+            task : "Example",
+            status : false
+        },
+        {
+            id: 4,
+            task : "Example",
+            status : false
+        }
+    ];
+    localStorage.setItem("datas", JSON.stringify(datas));
+};
 let getTask = () => {
     let task = document.getElementById("task");
     if(task.value.length > 0){
@@ -40,23 +42,23 @@ let getTask = () => {
         msg.classList.replace("hidden","flex");
         setTimeout(() => {
             msg.classList.replace("flex","hidden");
-        }, 2000);
+        }, 1700);
     };
 };
 let addTask = task => {
     frame.innerHTML = ``;
     task.forEach( (task,index) => {
         frame.innerHTML += `
-        <div class="rounded-sm flex w-2/5 justify-between items-center px-2 py-3 my-2 mx-1 ${task.status ? 'bg-gray-400' : 'bg-white hover:shadow-md shadow'}" onclick="taskDone(${index})" oncontextmenu="displayMenu(event,${index})">
+        <div class="rounded-sm flex w-2/5 justify-between items-center px-2 py-3 my-2 mx-1 ${task.status ? 'bg-gray-400' : 'bg-white hover:shadow-md shadow'}" oncontextmenu="displayMenu(event,${index})">
         <input type="checkbox" name="ckbox" id="ckbox" onchange="taskDone(${index})" ${task.status ? 'checked' : ''}>
-        <span class="task cursor-default ${task.status ? 'line-through' : ''}">${task.task}</span>
+        <span class="task cursor-default ${task.status ? 'line-through' : ''}" onclick="taskDone(${index})">${task.task}</span>
         <button class="material-icons" onclick="deleteTask(${index})">delete_outline</button>                 
         </div>
         `;
     });
 };
 let deleteTask = index => {
-    let confirmDel = confirm("Are you sure to delete this task?");
+    let confirmDel = confirm("Are u sure to delete this task?");
     if(confirmDel){
         getData.splice(index, 1);
         localStorage.setItem("datas", JSON.stringify(getData));
@@ -66,7 +68,7 @@ let deleteTask = index => {
         msg.classList.replace("hidden","flex");
         setTimeout(() => {
             msg.classList.replace("flex","hidden");
-        }, 2000);
+        }, 1700);
     };
 };
 let taskDone = index => {
