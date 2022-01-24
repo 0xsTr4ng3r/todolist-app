@@ -1,30 +1,34 @@
 const frame = document.getElementById("frame");
 let getData = JSON.parse(localStorage.getItem("datas"));
-if(getData == ''){
-    let datas = [
-        {
-            id : 1,
-            task : "Example",
-            status : false
-        },
-        {
-            id : 2,
-            task : "Example",
-            status : false
-        },
-        {
-            id: 3,
-            task : "Example",
-            status : false
-        },
-        {
-            id: 4,
-            task : "Example",
-            status : false
-        }
-    ];
-    localStorage.setItem("datas", JSON.stringify(datas));
+
+let addData = () => {
+    if(getData == null){
+        let datas = [
+            {
+                id : 1,
+                task : "Example",
+                status : false
+            },
+            {
+                id : 2,
+                task : "Example",
+                status : false
+            },
+            {
+                id: 3,
+                task : "Example",
+                status : false
+            },
+            {
+                id: 4,
+                task : "Example",
+                status : false
+            }
+        ];
+        localStorage.setItem("datas", JSON.stringify(datas));
+    };
 };
+
 let getTask = () => {
     let task = document.getElementById("task");
     if(task.value.length > 0){
@@ -92,4 +96,10 @@ let closeMenu = () => {
     let menu = document.querySelector(".menu");
     menu.classList.replace("fixed","hidden");
 }
-addTask(getData);
+
+if(getData == null){
+    addData();
+    location.reload();
+}else{
+    addTask(getData);
+};
